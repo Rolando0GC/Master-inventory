@@ -4,6 +4,8 @@
  */
 package Interface_admin;
 
+import java.awt.event.ActionEvent;
+
 /**
  *
  * @author SONY
@@ -43,6 +45,11 @@ public class Index extends javax.swing.JFrame {
         jButton4.setText("GESTION DE UBICACIONES");
 
         jButton5.setText("AÑADIR USUARIOS");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -80,6 +87,19 @@ public class Index extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+               dispose();
+               Crear_Usuarios p= new Crear_Usuarios();
+               p.setLocationRelativeTo(null);
+               p.pack();
+               p.setVisible(true);
+               p.vt();
+               
+              
+           
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -110,10 +130,14 @@ public class Index extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Index().setVisible(true);
+         Index i= new Index();
+         i.setLocationRelativeTo(null);
+         i.pack();
+         i.setVisible(false);
             }
         });
     }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
