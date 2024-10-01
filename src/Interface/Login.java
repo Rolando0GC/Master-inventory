@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Interface_admin;
+package Interface;
 
 
 import java.sql.ResultSet;
@@ -92,7 +92,7 @@ Conexion CDB = new Conexion();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+       boolean f = false; 
        
         if (jTextField1.getText().equalsIgnoreCase("")||jPasswordField1.getText().equalsIgnoreCase("")){
         JOptionPane.showMessageDialog(null,"Alguno de los cambos esta vacio");
@@ -129,21 +129,38 @@ Conexion CDB = new Conexion();
              }
              String nom=d[1];
              String pass=d[2];
+             String tipe =d[3];
+             CDB.conexion.close();
+             
              if (nom.equalsIgnoreCase(jTextField1.getText())&&pass.equalsIgnoreCase(jPasswordField1.getText())){
-              dispose();
+              
+               dispose();
                Index p= new Index();
+               switch(tipe){
+                   case "N1":
+                       p.n1();
+                       break;
+                   case "N2":
+                       p.n2();
+                       break;
+               }
                p.setLocationRelativeTo(null);
                p.pack();
                p.setVisible(true);
+               f=true;
+               
               
-             }else {JOptionPane.showMessageDialog(null, "USUARIO Y/O CONTRASEÑA INCORRECTA");}
-             } catch(NullPointerException e){}
+             }
+           
+        } catch(NullPointerException e){}
          
          catch (SQLException ex) {
         Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
         }
-        
+            if (f==false)
+            JOptionPane.showMessageDialog(null, "USUARIO Y/O CONTRASEÑA INCORRECTA");
+             
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

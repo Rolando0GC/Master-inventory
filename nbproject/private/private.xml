@@ -3,10 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/SONY/Documents/NetBeansProjects/Master%20inventory/src/Interface_admin/Login.java</file>
-            <file>file:/C:/Users/SONY/Documents/NetBeansProjects/Master%20inventory/src/Interface_admin/Conexion.java</file>
-            <file>file:/C:/Users/SONY/Documents/NetBeansProjects/Master%20inventory/src/Interface_admin/Index.java</file>
-            <file>file:/C:/Users/SONY/Documents/NetBeansProjects/Master%20inventory/src/Interface_admin/Crear_Usuarios.java</file>
+            <file>file:/C:/Users/SONY/Documents/NetBeansProjects/Master%20inventory/src/Interface/Index.java</file>
+            <file>file:/C:/Users/SONY/Documents/NetBeansProjects/Master%20inventory/src/Interface/Crear_Usuarios.java</file>
+            <file>file:/C:/Users/SONY/Documents/NetBeansProjects/Master%20inventory/src/Interface/Gestion_Productos.java</file>
         </group>
     </open-files>
 </project-private>

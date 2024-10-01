@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Interface_admin;
+package Interface;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,6 +50,7 @@ Conexion CDB = new Conexion();
         jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,13 +92,20 @@ Conexion CDB = new Conexion();
 
         jLabel6.setText("ID");
 
+        jButton4.setText("REGRESAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(jLabel4)
+                .addGap(10, 10, 10)
+                .addComponent(jButton4)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
@@ -122,12 +130,6 @@ Conexion CDB = new Conexion();
                                         .addGap(45, 45, 45)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton2)
-                                        .addGap(120, 120, 120))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,15 +140,26 @@ Conexion CDB = new Conexion();
                                                     .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jButton3)))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel4)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jButton2)))
+                                        .addGap(120, 120, 120)))))
                         .addGap(37, 37, 37))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jLabel4))
                 .addGap(12, 12, 12)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -162,9 +175,9 @@ Conexion CDB = new Conexion();
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -189,7 +202,14 @@ Conexion CDB = new Conexion();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-           try {
+         if (jTextField1.getText().equalsIgnoreCase("")
+                        ||jTextField2.getText().equalsIgnoreCase("")
+                        ||jTextField3.getText().equalsIgnoreCase("")
+                        ){
+        
+                   JOptionPane.showMessageDialog(null,"Alguno de los campos esta vacio");
+            }else{   
+        try {
              CDB.getConexion();
              PreparedStatement stmt;
              ResultSet resultado;
@@ -198,16 +218,15 @@ Conexion CDB = new Conexion();
              
              String op=jComboBox2.getItemAt(jComboBox2.getSelectedIndex());
             
-        switch(op){
-                case "AÑADIR":
-                   
-                    int valor1=Integer.parseInt(jTextField1.getText());
+           switch(op){
+                case "AÑADIR" -> {
+                    String valor1=jTextField1.getText();
                     String valor2=jTextField3.getText();
                     String valor3=jTextField2.getText();
                     String valor4=jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
                     
                     stmt=CDB.conexion.prepareStatement("insert into Usuarios values (?,?,?,?)");
-                    stmt.setInt(1, valor1);
+                    stmt.setString(1, valor1);
                     stmt.setString(2, valor2);
                     stmt.setString(3, valor3);
                     stmt.setString(4, valor4);
@@ -215,50 +234,49 @@ Conexion CDB = new Conexion();
                     
                   
                     CDB.conexion.close();
-                    break;
+                }
                     
-                case "ACTUALIZAR":
-                 instruccion="select * from Usuarios";
-                 resultado=sentencia.executeQuery(instruccion);
-                 ResultSetMetaData metaDatos=resultado.getMetaData();
-            
-                String V1=metaDatos.getColumnName(2);
-                String V2=metaDatos.getColumnName(3);
-                String V3=metaDatos.getColumnName(4);
-                
-                instruccion="update Usuarios set "+V1+" = \""+jTextField3.getText()+"\" where id_u = \""+jTextField1.getText()+"\"";
-                sentencia.execute(instruccion);
-                
-                 instruccion="update Usuarios set "+V2+" = \""+jTextField2.getText()+"\" where id_u = \""+jTextField1.getText()+"\"";
-                sentencia.execute(instruccion);
+                case "ACTUALIZAR" -> {
+                    instruccion="select * from Usuarios";
+                    resultado=sentencia.executeQuery(instruccion);
+                    ResultSetMetaData metaDatos=resultado.getMetaData();
+                    
+                    String V1=metaDatos.getColumnName(2);
+                    String V2=metaDatos.getColumnName(3);
+                    String V3=metaDatos.getColumnName(4);
+                    
+                    instruccion="update Usuarios set "+V1+" = \""+jTextField3.getText()+"\" where id_usuario = \""+jTextField1.getText()+"\"";
+                    sentencia.execute(instruccion);
+                    
+                    instruccion="update Usuarios set "+V2+" = \""+jTextField2.getText()+"\" where id_usuario = \""+jTextField1.getText()+"\"";
+                    sentencia.execute(instruccion);
                     String v5=jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
-                 instruccion="update Usuarios set "+V3+" = \""+v5+"\"  where id_u = \""+jTextField1.getText()+"\"";
-                sentencia.execute(instruccion);
+                    instruccion="update Usuarios set "+V3+" = \""+v5+"\"  where id_usuario = \""+jTextField1.getText()+"\"";
+                    sentencia.execute(instruccion);
+                    
+                    CDB.conexion.close();
+                }
                 
-                 CDB.conexion.close();
-                 
-                  break;
-                
-                case "BORRAR":
-                     instruccion="delete from Usuarios where id_u = \""+jTextField1.getText()+"\"";
-                            
-                     sentencia.execute(instruccion);
-                     System.out.println(instruccion);
-                     CDB.conexion.close();
-                     
-                    break;
-                default: System.out.println(""+op);
+                case "BORRAR" -> {
+                    instruccion="delete from Usuarios where id_usuario = \""+jTextField1.getText()+"\"";
+                    
+                    sentencia.execute(instruccion);
+                    System.out.println(instruccion);
+                    CDB.conexion.close();
+                }
+                default -> System.out.println(""+op);
             }
            
             jTextField2.setText("");
-             jTextField1.setText("");
+            jTextField1.setText("");
             jTextField3.setText("");
-          
+           CDB.verTabla("Usuarios", jScrollPane1);
+           CDB.conexion.close();
             
         } catch (SQLException ex) {
             Logger.getLogger(Crear_Usuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-          CDB.verTabla("Usuarios", jScrollPane1);
+         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -279,14 +297,14 @@ Conexion CDB = new Conexion();
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
           
-        if (jButton3.getText().equalsIgnoreCase("")){
-        JOptionPane.showMessageDialog(null,"El campo nombre esta vacio");
+        if (jTextField1.getText().equalsIgnoreCase("")){
+        JOptionPane.showMessageDialog(null,"El campo ID esta vacio");
         }else{
         try {
           
             ResultSet resultado;
             CDB.getConexion();
-            String instruccion=("select * from usuarios where id_u = \""+jTextField1.getText()+"\"");
+            String instruccion=("select * from usuarios where id_usuario = \""+jTextField1.getText()+"\"");
             Statement sentencia=CDB.conexion.createStatement();
             resultado=sentencia.executeQuery(instruccion);
             ResultSetMetaData metaDatos=resultado.getMetaData();
@@ -314,7 +332,7 @@ Conexion CDB = new Conexion();
              }
              jTextField3.setText(d[1]);
              jTextField2.setText(d[2]);
-            
+            CDB.conexion.close();
              } catch(NullPointerException e){}
          
          catch (SQLException ex) {
@@ -322,6 +340,15 @@ Conexion CDB = new Conexion();
         }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+               Login p= new Login();
+               p.setLocationRelativeTo(null);
+               p.pack();
+               p.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -378,6 +405,7 @@ Conexion CDB = new Conexion();
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Interface_admin;
+package Interface;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,6 +67,8 @@ public class Conexion {
                     case "INT":
                         datos.add(rs.getInt(i));
                         break;
+                    case "DATE":
+                        datos.add(rs.getDate(i));
                     default: System.out.println(" "+tipo);
                 }
             }
@@ -109,4 +111,36 @@ public class Conexion {
         }
        
  }
+  public void verTabla2(JScrollPane a){
+         
+        try {
+            Vector titulos = new Vector();
+            Vector filas =new Vector();
+            
+            ResultSet resultado;
+            getConexion();
+           
+            
+            String instruccion="select distinct *" +
+"from Productos inner join ubicaciones where Productos.id_producto=ubicaciones.id_producto";
+            Statement sentencia=conexion.createStatement();
+            resultado=sentencia.executeQuery(instruccion);
+            
+            ResultSetMetaData metaDatos=resultado.getMetaData();
+        
+            int numColumnas=metaDatos.getColumnCount();
+            
+            for(int i=1;i<=numColumnas;i++){
+                titulos.add(metaDatos.getColumnName(i));
+                
+            }
+            filas=(datos(resultado, numColumnas, metaDatos));
+            JTable tabla=new JTable(filas,titulos);
+            a.setViewportView(tabla);
+            conexion.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+ }   
 }
